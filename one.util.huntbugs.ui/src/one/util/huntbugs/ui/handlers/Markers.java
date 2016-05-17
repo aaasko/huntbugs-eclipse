@@ -44,11 +44,12 @@ public class Markers {
 		Location location = getAnnotation(warning, "LOCATION");
 		
 		try {
+			WarningFormatter formatter = new WarningFormatter(warning);
 			IType type = project.findType(typeInfo.getTypeName().replace('/', '.'));
 			IResource resource = type.getResource();
 			IMarker marker = resource.createMarker(HuntBugsMarker.MARKER);
 			marker.setAttribute(IMarker.SEVERITY, getSeverityByScore(warning.getScore()));
-			marker.setAttribute(IMarker.MESSAGE, warning.getType().getName());
+			marker.setAttribute(IMarker.MESSAGE, formatter.getTitle() + ". " + formatter.getDescription());
 			if (location != null) {
 				marker.setAttribute(IMarker.LINE_NUMBER, 1 + location.getSourceLine());
 			}
