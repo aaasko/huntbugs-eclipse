@@ -52,7 +52,7 @@ public class Markers {
 			marker.setAttribute(IMarker.SEVERITY, getSeverityByScore(warning.getScore()));
 			marker.setAttribute(IMarker.MESSAGE, formatter.getTitle() + ". " + formatter.getDescription());
 			if (location != null) {
-				marker.setAttribute(IMarker.LINE_NUMBER, 1 + location.getSourceLine());
+				marker.setAttribute(IMarker.LINE_NUMBER, location.getSourceLine());
 			}
 			if (method != null) {
 				marker.setAttribute(IMarker.LOCATION, "method " + method.getName());
