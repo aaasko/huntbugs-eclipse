@@ -32,12 +32,7 @@ public class AnalyzeProject extends AbstractHandler implements IHandler {
 		options.minScore = 1;
 		
 		Context context = new Context(repository, options);
-		context.analyzePackage("");
-		
-		// TODO send errors to Error Log (view)
-		
-		new Markers(project).delete();
-		new Markers(project).create(context.warnings());
+		new AnalysisJob(context, project).schedule();
 		
 		return null;
 	}

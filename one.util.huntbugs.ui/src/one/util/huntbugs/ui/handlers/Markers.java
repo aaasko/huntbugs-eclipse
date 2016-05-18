@@ -10,6 +10,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IType;
 
 import one.util.huntbugs.ui.HuntBugsMarker;
+import one.util.huntbugs.ui.HuntBugsUi;
 import one.util.huntbugs.warning.Warning;
 import one.util.huntbugs.warning.WarningAnnotation;
 import one.util.huntbugs.warning.WarningAnnotation.Location;
@@ -28,7 +29,7 @@ public class Markers {
 		try {
 			project.getProject().deleteMarkers(HuntBugsMarker.MARKER, true, IResource.DEPTH_INFINITE);
 		} catch (CoreException e) {
-			throw new ExecutionException("Can't delete HuntBugs markers", e);
+			throw new ExecutionException("Can't delete " + HuntBugsUi.BRAND + " markers", e);
 		}
 	}
 
