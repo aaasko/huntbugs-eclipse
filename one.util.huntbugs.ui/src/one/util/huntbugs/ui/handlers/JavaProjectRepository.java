@@ -59,14 +59,14 @@ public class JavaProjectRepository {
 						dependencyLoaders.addAll(collectTypeLoaders(JavaCore.create(requiredProject)));
 					}
 				} catch (CoreException e) {
-					// ignore
+					new ErrorEvent(e).log();
 				}
 				break;
 			case IClasspathEntry.CPE_LIBRARY:
 				try {
 					dependencyLoaders.add(new JarTypeLoader(new JarFile(classpathEntry.getPath().toFile())));
 				} catch (IOException e) {
-					// ignore
+					new ErrorEvent(e).log();
 				}
 				break;
 			default:

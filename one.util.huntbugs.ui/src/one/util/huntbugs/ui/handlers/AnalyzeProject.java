@@ -25,6 +25,7 @@ public class AnalyzeProject extends AbstractHandler implements IHandler {
 		try {
 			repository = new JavaProjectRepository(project).construct();
 		} catch (JavaModelException e) {
+			new ErrorEvent(e).log();
 			return null; // we can't do anything anymore
 		}
 		

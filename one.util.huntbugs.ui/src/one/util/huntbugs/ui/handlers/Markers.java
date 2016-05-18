@@ -62,7 +62,7 @@ public class Markers {
 				marker.setAttribute(IMarker.LOCATION, "class " + typeInfo.getSimpleName());
 			}
 		} catch (CoreException e) {
-			// should be logged
+			new ErrorEvent(e).log();
 		}
     }
     

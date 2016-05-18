@@ -31,7 +31,9 @@ public class AnalysisJob extends Job {
 			monitor.done();
 		}
 		
-		// TODO send errors to Error Log (view)
+		context.errors().forEach(e -> {
+			new ErrorEvent(e.toString()).log();
+		});
 		
 		try {
 			new Markers(project).delete();
