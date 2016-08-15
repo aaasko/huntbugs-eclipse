@@ -49,7 +49,7 @@ public class Markers {
 			IType type = project.findType(typeInfo.getTypeName().replace('/', '.'));
 			IResource resource = type.getResource();
 			IMarker marker = resource.createMarker(HuntBugsMarker.MARKER);
-			marker.setAttribute(IMarker.SEVERITY, getSeverityByScore(warning.getScore()));
+			marker.setAttribute(IMarker.SEVERITY, Severity.of(warning).constant());
 			marker.setAttribute(IMarker.MESSAGE, formatter.getTitle() + ". " + formatter.getDescription());
 			if (location != null) {
 				marker.setAttribute(IMarker.LINE_NUMBER, location.getSourceLine());
@@ -75,15 +75,5 @@ public class Markers {
     		throw new AssertionError(e); // must not happen
     	}
     }
-    
-	private int getSeverityByScore(int score) {
-		if (score >= 70) {
-			return IMarker.SEVERITY_ERROR;
-		} else if (score >= 30) {
-			return IMarker.SEVERITY_WARNING;
-		} else {
-			return IMarker.SEVERITY_INFO;
-		}
-	}
 	
 }

@@ -120,5 +120,19 @@
             name="message">
       </attribute>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="one.util.huntbugs.ui"
+            name="HuntBugs">
+      </category>
+      <e4view
+            category="one.util.huntbugs.ui"
+            class="one.util.huntbugs.ui.views.BugExplorerView"
+            id="one.util.huntbugs.ui.views.BugExplorer"
+            name="Bug Explorer"
+            restorable="true">
+      </e4view>
+   </extension>
 
 </plugin>
