@@ -10,8 +10,8 @@ import one.util.huntbugs.warning.Warning;
 
 class BugExplorerViewMapper {
 	
-	Object[] mapToInput(List<Warning> warnings) {
-		return classifyBySeverity(warnings);
+	Object[] mapToTreeInput(BugExplorerInput input) {
+		return classifyBySeverity(input.getWarnings());
 	}
 	
 	private Object[] classifyBySeverity(List<Warning> warnings) {

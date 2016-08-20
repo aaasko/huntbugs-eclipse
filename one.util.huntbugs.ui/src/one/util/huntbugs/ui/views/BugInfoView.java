@@ -25,7 +25,7 @@ public class BugInfoView {
 	public void create(Composite parent) {
 		this.browser = new Browser(parent, SWT.NONE);
 		
-		BugInfoInput.INSTANCE.subscribe(maybeWarning -> {
+		BugInfoInputStore.INSTANCE.subscribe(maybeWarning -> {
 			maybeWarning.ifPresent(warning ->
 				sync.asyncExec(() -> {
 					browser.setText(new BugInfoViewMapper().mapToText(warning));
@@ -36,7 +36,7 @@ public class BugInfoView {
 
 	@PreDestroy
 	public void destroy() {
-		BugInfoInput.INSTANCE.unsubscribe();
+		BugInfoInputStore.INSTANCE.unsubscribe();
 	}
 	
 	@Focus

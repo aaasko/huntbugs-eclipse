@@ -4,8 +4,8 @@ import java.util.function.Consumer;
 
 public abstract class SimpleStore<T> {
 
-	private T data;
-	private Consumer<T> subscriber;
+	protected T data;
+	protected Consumer<T> subscriber;
 	
 	public SimpleStore(T defaultValue) {
 		this.data = defaultValue;

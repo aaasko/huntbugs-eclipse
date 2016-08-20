@@ -1,16 +1,27 @@
 package one.util.huntbugs.ui.views;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import org.eclipse.jdt.core.IJavaProject;
 
 import one.util.huntbugs.warning.Warning;
 
-public class BugExplorerInput extends SimpleStore<List<Warning>> {
+public class BugExplorerInput {
 
-	public static final BugExplorerInput INSTANCE = new BugExplorerInput();
+	private final IJavaProject project;
+	private final List<Warning> warnings;
+
+	public BugExplorerInput(IJavaProject project, List<Warning> warnings) {
+		this.project = project;
+		this.warnings = warnings;
+	}
 	
-	private BugExplorerInput() {
-		super(new ArrayList<>());
+	public IJavaProject getProject() {
+		return project;
+	}
+	
+	public List<Warning> getWarnings() {
+		return warnings;
 	}
 	
 }

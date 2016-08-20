@@ -12,7 +12,9 @@ import org.eclipse.jdt.core.IJavaProject;
 
 import one.util.huntbugs.analysis.Context;
 import one.util.huntbugs.ui.HuntBugsUi;
+import one.util.huntbugs.ui.markers.Markers;
 import one.util.huntbugs.ui.views.BugExplorerInput;
+import one.util.huntbugs.ui.views.BugExplorerInputStore;
 import one.util.huntbugs.warning.Warning;
 
 public class AnalysisJob extends Job {
@@ -53,7 +55,7 @@ public class AnalysisJob extends Job {
 		}
 		
 		// 3 - update the view
-		BugExplorerInput.INSTANCE.set(warnings);
+		BugExplorerInputStore.INSTANCE.set(new BugExplorerInput(project, warnings));
 		
 		return Status.OK_STATUS;
 	}

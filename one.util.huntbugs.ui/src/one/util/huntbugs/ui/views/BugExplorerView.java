@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UISynchronize;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -16,6 +17,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
+import one.util.huntbugs.ui.warning.WarningLocation;
 import one.util.huntbugs.warning.Warning;
 
 public class BugExplorerView {
@@ -35,9 +37,9 @@ public class BugExplorerView {
 		treeViewer.setLabelProvider(new BugExplorerLabelProvider());
 		treeViewer.setContentProvider(new BugExplorerContentProvider());
 		
-		BugExplorerInput.INSTANCE.subscribe(warnings -> {
+		BugExplorerInputStore.INSTANCE.subscribe(input -> {
 			sync.asyncExec(() -> {
-				treeViewer.setInput(new BugExplorerViewMapper().mapToInput(warnings));
+				treeViewer.setInput(new BugExplorerViewMapper().mapToTreeInput(input));
 			});
 		});
 		
@@ -49,18 +51,25 @@ public class BugExplorerView {
 				TreeItem item = (TreeItem) e.item;
 				Object data = item.getData();
 				if (data instanceof Warning) {
-					BugInfoInput.INSTANCE.set(Optional.of((Warning) data));
+					BugInfoInputStore.INSTANCE.set(Optional.of((Warning) data));
 				} else {
-					BugInfoInput.INSTANCE.set(Optional.empty());
+					BugInfoInputStore.INSTANCE.set(Optional.empty());
 				}
 			}
 			
+		});
+		treeViewer.addDoubleClickListener(event -> {
+			IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+			Object firstElement = selection.getFirstElement();
+			if (firstElement instanceof Warning) {
+				new WarningLocation((Warning) firstElement, BugExplorerInputStore.INSTANCE.getProject()).open();
+			}
 		});
 	}
 
 	@PreDestroy
 	public void destroy() {
-		BugExplorerInput.INSTANCE.unsubscribe();
+		BugExplorerInputStore.INSTANCE.unsubscribe();
 	}
 	
 	@Focus

@@ -6,6 +6,8 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.jdt.core.IJavaProject;
 
+import one.util.huntbugs.ui.markers.Markers;
+
 public class DeleteMarkers extends AbstractHandler implements IHandler {
 
 	@Override
