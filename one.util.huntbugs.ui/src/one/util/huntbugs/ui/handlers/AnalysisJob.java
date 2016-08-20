@@ -53,7 +53,7 @@ public class AnalysisJob extends Job {
 		}
 		
 		// 3 - update the view
-		BugExplorerInput.INSTANCE.setWarnings(warnings);
+		BugExplorerInput.INSTANCE.set(warnings);
 		
 		return Status.OK_STATUS;
 	}

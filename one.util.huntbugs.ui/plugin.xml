@@ -133,6 +133,13 @@
             name="Bug Explorer"
             restorable="true">
       </e4view>
+      <e4view
+            category="one.util.huntbugs.ui"
+            class="one.util.huntbugs.ui.views.BugInfoView"
+            id="one.util.huntbugs.ui.views.BugInfo"
+            name="Bug Info"
+            restorable="true">
+      </e4view>
    </extension>
 
 </plugin>
