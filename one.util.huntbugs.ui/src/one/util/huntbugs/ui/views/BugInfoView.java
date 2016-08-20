@@ -11,7 +11,9 @@ import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Composite;
 
 public class BugInfoView {
-
+	
+	public static final String ID = "one.util.huntbugs.ui.views.BugInfo";
+	
 	@Inject
 	private UISynchronize sync;
 	
