@@ -27,6 +27,8 @@ import one.util.huntbugs.warning.Warning;
 
 public class BugExplorerView {
 
+	public static final String ID = "one.util.huntbugs.ui.views.BugExplorer";
+	
 	@Inject
 	private UISynchronize sync;
 	
