@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/one.util.huntbugs.feature_0.0.1.qualifier.jar" id="one.util.huntbugs.feature" version="0.0.1.qualifier">
+      <category name="one.util.huntbugs"/>
+   </feature>
+   <category-def name="one.util.huntbugs" label="HuntBugs">
+      <description>
+         New Java bytecode static analyzer tool based on Procyon Compiler Tools aimed to supersede the FindBugs. Currently in early development stage, though already could be tried.
+      </description>
+   </category-def>
+</site>
