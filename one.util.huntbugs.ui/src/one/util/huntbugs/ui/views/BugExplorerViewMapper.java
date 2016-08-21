@@ -21,17 +21,17 @@ class BugExplorerViewMapper {
 				.entrySet()
 				.stream()
 				.sorted(Comparator.comparing(entry -> entry.getKey()))
-				.map(entry -> new BugSeverity(entry.getKey().title(), classifyByType(entry.getValue())))
+				.map(entry -> new BugSeverity(entry.getKey(), classifyByType(entry.getKey(), entry.getValue())))
 				.toArray();
 	}
 
-	private List<BugType> classifyByType(List<Warning> warnings) {
+	private List<BugType> classifyByType(Severity severity, List<Warning> warnings) {
 		return warnings
 				.stream()
 				.collect(Collectors.groupingBy(w -> new WarningFormatter(w).getTitle()))
 				.entrySet()
 				.stream()
-				.map(entry -> new BugType(entry.getKey(), entry.getValue()))
+				.map(entry -> new BugType(severity, entry.getKey(), entry.getValue()))
 				.sorted(Comparator.comparing(BugType::getTitle))
 				.collect(Collectors.toList());
 	}

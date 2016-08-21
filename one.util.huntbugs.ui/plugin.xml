@@ -129,6 +129,7 @@
       <e4view
             category="one.util.huntbugs.ui"
             class="one.util.huntbugs.ui.views.BugExplorerView"
+            icon="icons/logo-16x16.png"
             id="one.util.huntbugs.ui.views.BugExplorer"
             name="Bug Explorer"
             restorable="true">
@@ -136,6 +137,7 @@
       <e4view
             category="one.util.huntbugs.ui"
             class="one.util.huntbugs.ui.views.BugInfoView"
+            icon="icons/logo-16x16.png"
             id="one.util.huntbugs.ui.views.BugInfo"
             name="Bug Info"
             restorable="true">
